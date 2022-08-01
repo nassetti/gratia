@@ -6,7 +6,7 @@ Gratia is a daily journalling application, centred around the Stoic concept
 
 ## Features
 
-## Data Modelling
+## Data
 
 ## Testing
 
