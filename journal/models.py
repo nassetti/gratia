@@ -13,11 +13,11 @@ class Journal(models.Model):
         User, on_delete=models.CASCADE,
         related_name="journal_entry")
     updated_on = models.DateTimeField(auto_now=True)
-    item_one = models.TextField()
-    item_two = models.TextField()
-    item_three = models.TextField()
-    item_four = models.TextField()
-    item_five = models.TextField()
+    one = models.TextField()
+    two = models.TextField()
+    three = models.TextField()
+    four = models.TextField()
+    five = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
