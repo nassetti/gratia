@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 # Create your models here.
 
 
@@ -23,6 +24,7 @@ class Journal(models.Model):
     likes = models.ManyToManyField(
         User, related_name='journal_likes',
         blank=True)
+    tags = TaggableManager()
 
 
 class Meta:

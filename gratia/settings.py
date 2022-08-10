@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
+    'taggit',
     'cloudinary',
     'journal',
 ]
