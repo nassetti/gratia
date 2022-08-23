@@ -8,7 +8,3 @@ class JournalList(generic.ListView):
     model = Journal 
     queryset = Journal.objects.filter(status=1).order_by('-created_on')
     paginate_by = 25
-
-
-def taskList(request):
-    return HttpResponse('Gratia Application')
