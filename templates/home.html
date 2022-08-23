@@ -5,5 +5,22 @@ Gratia: Home
 {% endblock %}
 
 {% block content %}
-<h1>Gratia: </h1>
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Journal Entries -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+            {% for entry in journal_list %}
+
+            {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
 {% endblock %}
