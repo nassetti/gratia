@@ -27,14 +27,14 @@ class Journal(models.Model):
     tags = TaggableManager()
 
 
-class Meta:
-    ordering = ['-created_on']
+    class Meta:
+        ordering = ['-created_on']
 
 
-def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.title
 
 
-def number_of_likes(self):
-    return self.likes.count()
+    def number_of_likes(self):
+        return self.likes.count()
 
