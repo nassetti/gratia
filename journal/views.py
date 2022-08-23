@@ -7,4 +7,5 @@ from .models import Journal
 class JournalList(generic.ListView):
     model = Journal 
     queryset = Journal.objects.filter(status=1).order_by('-created_on')
-    paginate_by = 25
+    template_name = 'home.html'
+
