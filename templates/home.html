@@ -9,17 +9,15 @@ Gratia: Home
     <div class="row">
 
         <!-- Journal Entries -->
-        <div class="col-12 mt-3 left">
+        <div class="col-12 mt-4 right">
             <div class="row">
-            {% for entry in journal_list %}
-
-            {% if forloop.counter|divisibleby:4 %}
+            {% for journal in journal_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h2 class="author card-title">
                                 <a href="#complete-later">{{ journal.author }}</a></h3>
-                            <h3 class="post-date">{{ journal.created_on }}</h3>    
+                            <p class="post-date">{{ journal.created_on }}</p>    
                             <ul class="gratitudes card-text">
                                 <li class="gratitude-1">{{ journal.one }}</li>
                                 <li class="gratitude-2">{{ journal.two }}</li>
@@ -27,15 +25,20 @@ Gratia: Home
                                 <li class="gratitude-4">{{ journal.four }}</li>
                                 <li class="gratitude-5">{{ journal.five }}</li>
                             </ul>
-                            <p class="card-text text-muted h5">
-                                <i class="fa-regular fa-heart"></i>{{ journal.number_of_likes }}
+                            <p class="card-text text-muted h5 right">
+                                <i class="fa-regular fa-heart "></i>{{ journal.number_of_likes }}
                             </p>
-                            <p class="tags">{{ journal.tags }}</p>
+                            <div class="tags">
+                                {% for tag in journal.tags.all %}
+                                <a href="{% url 'posts_by_tag' tag.slug %}">{{tag.name}}</a>
+                                {% endfor%}
+                            </div>
                         </div>
                     </div>
                 </div>
+            {% if forloop.counter|divisibleby:4 %}    
             </div>
-            <div>
+            <div class="row">
             {% endif %}
             {% endfor %}
             </div>
