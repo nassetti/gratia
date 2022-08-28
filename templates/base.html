@@ -19,7 +19,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Gratia</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Gratia</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -37,23 +37,25 @@
         >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-right">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Public</a>
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}">Public</a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link -toggle" href="#">Your Entries</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link -toggle" href="#">New Journal Entry</a>
+              <a class="nav-link -toggle" href="{% url 'new_entry' %}">New Journal Entry</a>
             </li>
+            {% endif %}
             {% if user.is_authenticated %}
             <li class="nav-item">
             <a class="nav-link -toggle btn btn-outline-danger" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
-            <li class="nav-item">
+            <li class="nav-item ms-3">
             <a class="nav-link -toggle btn btn-outline-primary" href="{% url 'account_signup' %}">Sign Up</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ms-3">
               <a class="nav-link -toggle btn btn-outline-primary" href="{% url 'account_login' %}">Login</a>
             </li>
             {% endif %}

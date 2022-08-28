@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
 {% block title %}
 Gratia: Journal Entry
 {% endblock %}
  
 {% block content %}
-	<h3>Your daily gratitudes:</h3>
-	<br>
-	<form method="post" action="/create/" class="form-group">
-		{% csrf_token %}
-		<div class="input-group mb-3">
-	  		<div class="input-group-prepend">
-	  		<button name="save" type="submit" class="btn btn-success">Create</button>
-	  		</div>
-	  		{{form.name}}
+<div class="container">
+	<div class="row">
+		<div class="card mt-3 md-6">
+			<h3 class="card-title">Your Daily Gratitudes</h3>
+			<form method="POST" autocomplete="off">
+				{% csrf_token%}
+				<div class="card-text">
+					{{ form|crispy }}
+				</div>
+				<button class="btn btn-success mt-3" type="submit">Save</button>
+			</form>
 		</div>
-	</form>
+	</div>
+</div>
+
 {% endblock %}

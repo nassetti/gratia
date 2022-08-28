@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="journal-title">
+                {% if (str(journal.author).lower()).endswith("s") == True %}
+                    {{ journal.author }}' Daily Gratitude
+                {% else %}
+                    {{ journal.author }}'s Daily Gratitude  
+                {% endif %}
+            </h1>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title"> {{ journal.created_on }}</div>
+        <div class="card-body">
+            <ul class="gratitudes">
+                <li>{{ journal.one }}</li>
+                <li>{{ journal.two }}</li>
+                <li>{{ journal.three }}</li>
+                <li>{{ journal.four }}</li>
+                <li>{{ journal.five }}</li>
+            </ul>
+            <p class="card-text text-muted h5 right">
+                {% if user.is_authenticated %}
+                <form class="d-inline" action="{% url 'like_interaction' journal.slug %}" method="POST">
+                    {% csrf token %}
+                    {% if liked %}
+                    <button type="submit" name="journal_id" value="{{journal.slug}}" class="btn-like">
+                        <i class="fas fa-heart "></i>
+                    </button>
+                    {% else %}
+                    <button type="submit" name="journal_id" value="{{journal.slug}}" class="btn-like">
+                        <i class="far fa-heart "></i>
+                    </button>
+                    {% endif %}
+                </form>
+                {% else %}
+                <i class="fa-regular fa-heart "></i>{{ journal.number_of_likes }}
+                {% endif %}
+            </p>
+            <div class="tags">
+                {% for tag in journal.tags.all %}
+                <a href="{% url 'posts_by_tag' tag.slug %}">{{tag.name}}</a>
+                {% endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

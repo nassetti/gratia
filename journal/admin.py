@@ -7,7 +7,7 @@ from .models import Journal
 @admin.register(Journal)
 class JournalAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'slug', 'status', 'created_on',)
-    search_fields = ['title', 'tags']
-    prepopulated_fields = {'slug': ('author',)}
+    list_display = ('status', 'created_on',)
+    search_fields = ['author', 'tags']
+    # prepopulated_fields = {'slug': ('author',)}
     list_filter = ('status', 'created_on')

@@ -16,7 +16,7 @@ Gratia: Home
                     <div class="card mb-4">
                         <div class="card-body">
                             <h2 class="author card-title">
-                                <a href="#">{{ journal.author }}</a></h3>
+                                <a href="#complete-later">{{ journal.author }}</a></h3>
                             <p class="post-date">{{ journal.created_on }}</p>    
                             <ul class="gratitudes card-text">
                                 <li class="gratitude-1">{{ journal.one }}</li>
@@ -36,7 +36,7 @@ Gratia: Home
                         </div>
                     </div>
                 </div>
-            {% if forloop.counter|divisibleby:3 %}    
+            {% if forloop.counter|divisibleby:4 %}    
             </div>
             <div class="row">
             {% endif %}
